@@ -1,0 +1,23 @@
+{
+  "name": "data-structures-problems",
+  "version": "1.0.0",
+  "description": "Solutions to problems",
+  "main": "ContainsDuplicate.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thehme/data-structures-problems.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thehme/data-structures-problems/issues"
+  },
+  "homepage": "https://github.com/thehme/data-structures-problems#readme",
+  "dependencies": {
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.2"
+  }
+}
