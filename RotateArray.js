@@ -28,6 +28,15 @@ Example 3:
 
 Input: nums = [1,2], k = 2
 Output: [1,2]
+
+Example 4:
+
+Input nums = [-1], k = 2
+Output: [-1]
+
+Example 5:
+Input nums = [1,2], k = 3
+
 */
 
 // [1,2], k = 2
@@ -70,26 +79,76 @@ var rotate3 = function(nums, k) {
   return nums;
 };
 
+var reverseArray = function (nums) {
+  let index = 0;
+  while (index < (nums.length / 2)) {
+    let temp = nums[index];
+    let lastIndex = nums.length - (index + 1);
+    nums[index] = nums[lastIndex];
+    nums[lastIndex] = temp;
+    index++;
+  }
+  return nums;
+};
+
+// LEETCODE: ACCEPTED ANSWER
+var reverseArray2 = function (nums, startIndex, endIndex) {
+  while (startIndex < endIndex) {
+    let temp = nums[startIndex];
+    nums[startIndex] = nums[endIndex];
+    nums[endIndex] = temp;
+    endIndex--;
+    startIndex++;
+  }
+  return nums;
+};
+
+var rotate4 = function(nums, k) {
+  // to account for rotations beyong the size of the array
+  // if nums.length = 2, but k = 3, then k should really be 2
+  k = k % nums.length;
+  // checking if nums.length !=== does not work for some edgecases
+  // reverse the left side of index k
+  reverseArray2(nums, 0, nums.length - k - 1);
+  // reverse from index k to the end of the array
+  reverseArray2(nums, nums.length - k, nums.length - 1);
+  // reverse entire array
+  reverseArray2(nums, 0, nums.length - 1);
+  return nums;
+}
+
 let nums = [1,2,3,4,5,6,7];
 let k = 3;
 // console.log(rotate1(nums, k));
 // console.log(rotate2(nums, k));
-console.log(rotate3(nums, k));
+// console.log(rotate3(nums, k));
+console.log(rotate4(nums, k));
 
 nums = [-1,-100,3,99];
 k = 2;
 // console.log(rotate1(nums, k));
 // console.log(rotate2(nums, k));
 // console.log(rotate3(nums, k));
+console.log(rotate4(nums, k));
 
 nums = [1,2];
 k = 0;
 // console.log(rotate1(nums, k));
 // console.log(rotate2(nums, k));
 // console.log(rotate3(nums, k));
+console.log(rotate4(nums, k));
 
 nums = [1,2];
 k = 2;
 // console.log(rotate1(nums, k));
 // console.log(rotate2(nums, k));
 // console.log(rotate3(nums, k));
+console.log(rotate4(nums, k));
+
+nums = [-1];
+k = 2;
+console.log(rotate4(nums, k));
+
+nums = [1,2];
+k = 3;
+console.log(rotate4(nums, k));
