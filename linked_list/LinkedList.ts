@@ -1,11 +1,6 @@
-interface ListNode {
-  value: number;
-  next: ListNode | null;
-}
-
 class MyNode {
   value: number;
-  next: ListNode | null;
+  next: MyNode | null;
 
   constructor (value: number) {
     this.value = value;
@@ -14,8 +9,8 @@ class MyNode {
 }
 
 class LinkedList {
-  head: ListNode;
-  tail: ListNode;
+  head: MyNode;
+  tail: MyNode;
   listSize: number = 0;
 
   constructor (value: number) {
@@ -33,7 +28,7 @@ class LinkedList {
    */
   append (value: number) {
     const newNode = new MyNode(value);
-    // set next to be a ListNode, i.e. newNode
+    // set next to be a MyNode, i.e. newNode
     this.tail.next = newNode;
     // point the tail the new node, i.e. newNode
     this.tail = newNode;
@@ -54,6 +49,16 @@ class LinkedList {
     // return new list
     return this;
   }
+
+  printList () {
+    const listArray = [];
+    let currentNode: MyNode | null = this.head;
+    while (currentNode !== null) {
+      listArray.push(currentNode.value);
+      currentNode = currentNode.next;
+    }
+    return listArray;
+  }
 }
 
 function createLinkedList () {
@@ -66,6 +71,7 @@ function createLinkedList () {
   // @ts-ignore
   console.log(myLinkedList.prepend(9));
   // @ts-ignore
+  console.log(myLinkedList.printList());
   // console.log(myLinkedList.append(9));
 }
 
