@@ -1,4 +1,4 @@
-import { ListNode } from "../Node";
+import { ListNode } from "../ListNode";
 
 /**
  * LILO: Last In First Out
